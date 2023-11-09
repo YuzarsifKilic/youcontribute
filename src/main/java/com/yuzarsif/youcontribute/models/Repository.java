@@ -8,7 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -23,4 +27,8 @@ public class Repository {
     private Integer id;
     private String organization;
     private String repository;
+    @CreationTimestamp
+    private Date createdAt;
+    @UpdateTimestamp
+    private Date updatedAt;
 }

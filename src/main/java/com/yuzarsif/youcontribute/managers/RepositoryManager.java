@@ -42,7 +42,11 @@ public class RepositoryManager {
                 repository.getOrganization(), repository.getRepository(), sinceYesterday);
 
         List<Issue> issues = Arrays.stream(githubIssueResponses)
-                .map(githubIssue -> new Issue())
+                .map(githubIssue -> Issue
+                        .builder()
+                        .title(githubIssue.getTitle())
+                        .body(githubIssue.getBody())
+                        .build())
                 .collect(Collectors.toList());
 
         issueService.saveAll(issues);
