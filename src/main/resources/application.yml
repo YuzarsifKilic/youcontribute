@@ -4,4 +4,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+
+github:
+  api-url: https://api.github.com
+  token: ${GITHUB_API_TOKEN}
