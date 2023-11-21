@@ -11,12 +11,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {RepositoryService} from "./services/repository.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { IssueListComponent } from './issues/issue-list/issue-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ImportComponent
+    ImportComponent,
+    IssueListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 package com.yuzarsif.youcontribute.service;
 
 import com.yuzarsif.youcontribute.models.Issue;
+import com.yuzarsif.youcontribute.models.Repository;
 import com.yuzarsif.youcontribute.repository.IssueRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,5 +22,10 @@ public class IssueService {
     @Transactional
     public void saveAll(List<Issue> issues) {
         issueRepository.saveAll(issues);
+    }
+
+    public List<Issue> list(Integer repositoryId) {
+        Repository repository = repositoryService.findById(repositoryId);
+        return issueRepository.findByRepository(repository);
     }
 }

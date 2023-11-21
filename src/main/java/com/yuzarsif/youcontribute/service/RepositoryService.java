@@ -3,6 +3,7 @@ package com.yuzarsif.youcontribute.service;
 import com.yuzarsif.youcontribute.exception.DuplicatedRepositoryException;
 import com.yuzarsif.youcontribute.models.Repository;
 import com.yuzarsif.youcontribute.repository.RepositoryRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,10 @@ public class RepositoryService {
                 .ifPresent((r) -> {
                     throw new DuplicatedRepositoryException(organization, repository);
                 });
+    }
+
+    public Repository findById(Integer repositoryId) {
+        return repository.findById(repositoryId)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Repository: %d is not found ", repositoryId)));
     }
 }

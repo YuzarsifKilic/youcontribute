@@ -4,6 +4,7 @@ import {RepositoryService} from "../services/repository.service";
 import {first} from "rxjs";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-import',
@@ -22,7 +23,8 @@ export class ImportComponent {
 
   constructor(private formBuilder: FormBuilder,
               private repositoryService: RepositoryService,
-              private toastr: ToastrService) {}
+              private toastr: ToastrService,
+              private router: Router) {}
 
   ngOnInit(): void {
 
@@ -35,6 +37,9 @@ export class ImportComponent {
       .subscribe(() => {
           this.loading = false;
           this.toastr.success("Imported successfully", "Success")
+        setTimeout(() => {
+          this.router.navigate(['home'])
+        }, 2000);
         },
         error => {
           this.loading = false;

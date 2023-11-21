@@ -17,6 +17,7 @@ import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,10 +48,15 @@ public class RepositoryManager {
                 repository.getOrganization(), repository.getRepository(), since);
 
         List<Issue> issues = Arrays.stream(githubIssueResponses)
+                .filter(githubIssue -> Objects.isNull(githubIssue.getPullRequest()))
                 .map(githubIssue -> Issue
                         .builder()
+                        .githubIssuesId(githubIssue.getId())
+                        .githubIssueNumber(githubIssue.getNumber())
+                        .url(githubIssue.getHtmlUrl())
                         .title(githubIssue.getTitle())
                         .body(githubIssue.getBody())
+                        .repository(repository)
                         .build())
                 .collect(Collectors.toList());
 
