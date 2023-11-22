@@ -3,6 +3,7 @@ package com.yuzarsif.youcontribute.service;
 import com.yuzarsif.youcontribute.models.Issue;
 import com.yuzarsif.youcontribute.models.Repository;
 import com.yuzarsif.youcontribute.repository.IssueRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,5 +28,10 @@ public class IssueService {
     public List<Issue> list(Integer repositoryId) {
         Repository repository = repositoryService.findById(repositoryId);
         return issueRepository.findByRepository(repository);
+    }
+
+    public Issue findRandomIssue() {
+        return issueRepository.findRandomIssue()
+                .orElseThrow(() -> new EntityNotFoundException("No issues found."));
     }
 }

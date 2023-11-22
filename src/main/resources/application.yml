@@ -15,3 +15,5 @@ github:
 
 application:
   import-frequency: ${ISSUES_IMPORT_FREQUENCY:60000}
+  challenge-frequency: ${ISSUES_CHALLENGE_FREQUENCY:10000}
+  challenge-tracking-frequency: ${CHALLENGE_TRACKING_FREQUENCY:10000}

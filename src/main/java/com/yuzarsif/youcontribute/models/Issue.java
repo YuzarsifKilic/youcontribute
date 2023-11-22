@@ -1,5 +1,6 @@
 package com.yuzarsif.youcontribute.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,4 +32,8 @@ public class Issue {
     @JoinColumn(name = "repository_id")
     @JsonManagedReference
     private Repository repository;
+
+    @OneToOne(mappedBy = "issue", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonBackReference
+    private IssueChallenge issueChallenge;
 }
