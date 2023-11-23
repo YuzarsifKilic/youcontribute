@@ -12,13 +12,19 @@ import {RepositoryService} from "./services/repository.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { IssueListComponent } from './issues/issue-list/issue-list.component';
+import { AcceptComponent } from './challanges/accept/accept.component';
+import { RejectComponent } from './challanges/reject/reject.component';
+import { ChallengeListComponent } from './challanges/challenge-list/challenge-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ImportComponent,
-    IssueListComponent
+    IssueListComponent,
+    AcceptComponent,
+    RejectComponent,
+    ChallengeListComponent
   ],
   imports: [
     BrowserModule,
