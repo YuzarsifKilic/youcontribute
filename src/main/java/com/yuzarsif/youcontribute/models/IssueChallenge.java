@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
@@ -26,6 +27,7 @@ public class IssueChallenge {
     private Issue issue;
     @Enumerated(EnumType.STRING)
     private IssueChallengeStatus status;
+    @CreationTimestamp
     private Date createdAt;
     private Date updateAt;
 }

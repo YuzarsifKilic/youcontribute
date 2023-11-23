@@ -29,6 +29,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 
     runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation group: 'com.pusher', name: 'pusher-java-client', version: '2.4.4'
+
+    implementation 'com.currencyfair:onesignal:1.0.15'
 
     annotationProcessor 'org.projectlombok:lombok'
 

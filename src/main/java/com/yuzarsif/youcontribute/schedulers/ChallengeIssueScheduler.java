@@ -1,5 +1,6 @@
 package com.yuzarsif.youcontribute.schedulers;
 
+import com.yuzarsif.youcontribute.clients.OneSignalClient;
 import com.yuzarsif.youcontribute.models.Issue;
 import com.yuzarsif.youcontribute.models.IssueChallenge;
 import com.yuzarsif.youcontribute.service.IssueChallengeService;
@@ -16,6 +17,7 @@ public class ChallengeIssueScheduler {
 
     private final IssueService issueService;
     private final IssueChallengeService issueChallengeService;
+    private final OneSignalClient oneSignalClient;
 
     @Scheduled(fixedRateString = "${application.challenge-frequency}")
     public void challengeIssueScheduler() {
@@ -28,6 +30,7 @@ public class ChallengeIssueScheduler {
         Issue randomIssue = issueService.findRandomIssue();
         log.info("Found a random issue : {}", randomIssue.getId());
         IssueChallenge issueChallenge = issueChallengeService.create(randomIssue);
+        oneSignalClient.sendNotification(issueChallenge.getId(), randomIssue.getTitle());
         log.info("Challenge issue scheduler finished");
     }
 }

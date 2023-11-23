@@ -14,4 +14,15 @@ import org.springframework.stereotype.Component;
 public class ApplicationProperties {
 
     private Integer importFrequency;
+    private OneSignalProperties oneSignal;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class OneSignalProperties {
+
+        private String appId;
+        private String apiAuthKey;
+        private String templateId;
+    }
 }

@@ -1,5 +1,6 @@
 package com.yuzarsif.youcontribute.schedulers;
 
+import com.yuzarsif.youcontribute.clients.OneSignalClient;
 import com.yuzarsif.youcontribute.managers.RepositoryManager;
 import com.yuzarsif.youcontribute.models.Repository;
 import com.yuzarsif.youcontribute.service.RepositoryService;
@@ -17,6 +18,7 @@ public class ImportIssueScheduler {
 
     private final RepositoryService repositoryService;
     private final RepositoryManager repositoryManager;
+
 
     @Scheduled(fixedRateString = "${application.import-frequency}", initialDelay = 60000)
     public void importIssueScheduler() {
