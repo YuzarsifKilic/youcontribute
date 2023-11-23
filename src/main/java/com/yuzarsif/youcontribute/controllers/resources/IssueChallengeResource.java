@@ -1,39 +1,44 @@
 package com.yuzarsif.youcontribute.controllers.resources;
 
 import com.yuzarsif.youcontribute.models.Issue;
-import com.yuzarsif.youcontribute.models.Repository;
+import com.yuzarsif.youcontribute.models.IssueChallenge;
+import com.yuzarsif.youcontribute.models.IssueChallengeStatus;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
 @Builder
-public class IssueResource {
+public class IssueChallengeResource {
 
     private Integer id;
-    private Long githubIssueId;
-    private Integer githubIssueNumber;
-    private String title;
-    private String body;
-    private String url;
+    private Integer issueId;
+    private Integer repositoryId;
+    private String repositoryTitle;
+    private String issueTitle;
+    private Date createdDate;
+    private IssueChallengeStatus status;
 
-    public static IssueResource createFor(Issue issue) {
-        return IssueResource
+    public static IssueChallengeResource createFor(IssueChallenge issueChallenge) {
+        Issue issue = issueChallenge.getIssue();
+        return IssueChallengeResource
                 .builder()
-                .id(issue.getId())
-                .githubIssueId(issue.getGithubIssuesId())
-                .githubIssueNumber(issue.getGithubIssueNumber())
-                .title(issue.getTitle())
-                .url(issue.getUrl())
-                .body(issue.getBody())
+                .id(issueChallenge.getId())
+                .issueId(issue.getId())
+                .repositoryId(issue.getRepository().getId())
+                .repositoryTitle(issue.getRepository().getRepository())
+                .issueTitle(issue.getTitle())
+                .createdDate(issueChallenge.getCreatedAt())
+                .status(issueChallenge.getStatus())
                 .build();
     }
 
-    public static List<IssueResource> createFor(List<Issue> issues) {
-        return issues.stream()
-                .map(IssueResource::createFor)
+    public static List<IssueChallengeResource> createFor(List<IssueChallenge> issueChallenges) {
+        return issueChallenges.stream()
+                .map(IssueChallengeResource::createFor)
                 .collect(Collectors.toList());
     }
 }

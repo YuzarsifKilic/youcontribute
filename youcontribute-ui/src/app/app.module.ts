@@ -15,6 +15,7 @@ import { IssueListComponent } from './issues/issue-list/issue-list.component';
 import { AcceptComponent } from './challanges/accept/accept.component';
 import { RejectComponent } from './challanges/reject/reject.component';
 import { ChallengeListComponent } from './challanges/challenge-list/challenge-list.component';
+import { StatusComponent } from './badges/status/status.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ChallengeListComponent } from './challanges/challenge-list/challenge-li
     IssueListComponent,
     AcceptComponent,
     RejectComponent,
-    ChallengeListComponent
+    ChallengeListComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,

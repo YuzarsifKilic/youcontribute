@@ -14,4 +14,6 @@ public interface IssueRepository extends JpaRepository<Issue, String> {
 
     @Query(value = "select * from issue where id not in (select issue_id from issue_challenge) order by rand() limit 1", nativeQuery = true)
     Optional<Issue> findRandomIssue();
+
+    Optional<Issue> findByGithubIssuesId(Long id);
 }

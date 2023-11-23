@@ -2,6 +2,7 @@ package com.yuzarsif.youcontribute.service;
 
 import com.yuzarsif.youcontribute.config.GithubProperties;
 import com.yuzarsif.youcontribute.service.models.GithubIssueResponse;
+import com.yuzarsif.youcontribute.service.models.GithubPullResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -37,6 +38,24 @@ public class GithubClient {
                 HttpMethod.GET,
                 request,
                 GithubIssueResponse[].class);
+
+        return response.getBody();
+    }
+
+    public GithubPullResponse[] listPullRequests(String owner, String repository) {
+        String issuesUrl = String.format("%s/repos/%s/%s/pulls?state=closed",
+                githubProperties.getApiUrl(),
+                owner,
+                repository);
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", "token " + githubProperties.getToken());
+        HttpEntity request = new HttpEntity(httpHeaders);
+
+        ResponseEntity<GithubPullResponse[]> response = restTemplate.exchange(issuesUrl,
+                HttpMethod.GET,
+                request,
+                GithubPullResponse[].class);
 
         return response.getBody();
     }
