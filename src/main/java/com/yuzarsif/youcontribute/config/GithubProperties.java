@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 public class GithubProperties {
 
     private String apiUrl;
-
     private String token;
+    private String authorizeUrl;
+    private String accessTokenUrl;
+    private String clientId;
+    private String clientSecret;
 }

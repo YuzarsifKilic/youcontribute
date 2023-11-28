@@ -6,6 +6,9 @@ import {IssueListComponent} from "./issues/issue-list/issue-list.component";
 import {AcceptComponent} from "./challanges/accept/accept.component";
 import {RejectComponent} from "./challanges/reject/reject.component";
 import {ChallengeListComponent} from "./challanges/challenge-list/challenge-list.component";
+import {SigninComponent} from "./auth/signin/signin.component";
+import {GithubCallbackComponent} from "./auth/github-callback/github-callback.component";
+import {PermissionService} from "./_services/permission.service";
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
@@ -14,11 +17,13 @@ const routes: Routes = [
   {path: "challenge/:id/accept", component: AcceptComponent},
   {path: "challenge/:id/reject", component: RejectComponent},
   {path: "challenges", component: ChallengeListComponent},
-  {path: "", redirectTo: "home", pathMatch: "full"}
+  {path: "signin", component: SigninComponent},
+  {path: "auth/github/callback", component: GithubCallbackComponent}
 ];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

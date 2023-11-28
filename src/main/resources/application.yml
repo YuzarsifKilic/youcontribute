@@ -12,6 +12,10 @@ spring:
 github:
   api-url: https://api.github.com
   token: ${GITHUB_API_TOKEN}
+  authorize-url: https://github.com/login/oauth/authorize
+  access-token-url: https://github.com/login/oauth/access_token
+  client-id: ${GITHUB_CLIENT_ID}
+  client-secret: ${GITHUB_CLIENT_SECRET}
 
 application:
   import-frequency: ${ISSUES_IMPORT_FREQUENCY:60000}

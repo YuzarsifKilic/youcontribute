@@ -16,6 +16,8 @@ import { AcceptComponent } from './challanges/accept/accept.component';
 import { RejectComponent } from './challanges/reject/reject.component';
 import { ChallengeListComponent } from './challanges/challenge-list/challenge-list.component';
 import { StatusComponent } from './badges/status/status.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { GithubCallbackComponent } from './auth/github-callback/github-callback.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { StatusComponent } from './badges/status/status.component';
     AcceptComponent,
     RejectComponent,
     ChallengeListComponent,
-    StatusComponent
+    StatusComponent,
+    SigninComponent,
+    GithubCallbackComponent
   ],
   imports: [
     BrowserModule,
